@@ -1,6 +1,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default function Navbar(props) {
   return <div>
@@ -12,16 +13,16 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
+              <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">Resume</a>
+              <Link className="nav-link" to="/contact">Resume</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">About</a>
+              <Link className="nav-link" to="/about">About</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" href="/">Contact</a>
+              <Link className="nav-link disabled" to="/contact">Contact</Link>
             </li>
           </ul>
         </div>

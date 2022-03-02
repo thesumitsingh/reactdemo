@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 
 export default function TextForm(props) {
-  const [text, setText]=useState("Enter text here");
+  const [text, setText]=useState("");
   const handleUpClick = () => {
     console.log("uppercase was clicked for: ",text);
     // text="i don't want to be contacted, please dont email me";
@@ -12,25 +12,31 @@ export default function TextForm(props) {
     console.log("on change");
     setText( event.target.value );
   }
+  const handleCopy = ()=>{
+    var text=document.getElementById("txtbox");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+  }
   const handleClear = ()=>{
     setText("");
   }
-  return <div>
+  return <div className="container my-2">
     <hr/>
-      <div className="container">
+      <div >
         <h1>{props.heading}</h1>
         <div className="form-group">
-          <label for="exampleFormControlInput1">Email address</label>
+          <label htmlFor="exampleFormControlInput1">Email address</label>
           <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
         </div>
         <div className="form-group">
-          <label for="exampleFormControlTextarea1">text area</label>
-          <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={text} onChange={handleOnChange} ></textarea>
+          <label htmlFor="exampleFormControlTextarea1">text area</label>
+          <textarea className="form-control" id="txtbox" rows="3" value={text} onChange={handleOnChange} ></textarea>
         </div><br/>
         {/* <button className="btn btn-primary">Convert to uppercase</button> */}
         <button className="btn btn-primary mx-2" onClick={handleUpClick} >Convert to Uppercase</button>
         <button className="btn btn-primary mx-2"  >Send email to me</button>
         <button className="btn btn-primary mx-2" onClick={handleClear} >Clear</button>
+        <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy text</button>
       </div>
 
       <div className="container2 my-3">
